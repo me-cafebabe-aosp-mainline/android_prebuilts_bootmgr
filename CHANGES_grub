@@ -1,47 +1,108 @@
-commit d3f8d43f04ae699410c9142f578cb762cb95589d
+commit 05dfe6365e407f7e14915e3514511c7b725ca78a
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
 Date:   Thu Feb 27 20:05:51 2025 +0800
 
-    LINEAGE: util/grub-mkrescue: Use `i386-pc`/`i386-efi` source dir in prebuilts/bootmgr if present
+    LINEAGE: util/grub-mkrescue: Also use the x86 platforms next to the --directory one
+    
+    When the platform directory given with --directory is the x86 one of a
+    tree that has one prefix per platform
+    (<root>/<platform>/lib/grub/<platform>), also add the other x86
+    platforms from <root> that exist. The image then boots on 32-bit UEFI
+    firmware and on BIOS as well.
+    
+    This does not depend on the current directory, and does not replace
+    platforms that were chosen explicitly.
+    
+    Assisted-by: LLM
+    Assisted-by: Claude Code:claude-sonnet-5-5
     
     Change-Id: I5799ae15ccad24168491b7935510987e858e5d68
 
-commit e7e19f4cfc6285f5c30f324f8fd0c8b6c88126b6
+commit 7a150f4057b6d734be8bb5a9ed7aad79ba335e3a
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
 Date:   Sat May 3 15:07:26 2025 +0800
 
     LINEAGE: loader: linux: Add command to specify to avoid ALIGN_UP initrd offsets
     
+    Add the initrd_no_align_up command to skip padding the components of
+    the initrd to 4 bytes. `initrd_no_align_up false` restores the default.
+    
+    The padding inside of the cpio headers that we generate is not optional,
+    so keep that part of the size calculation as it is.
+    
+    Assisted-by: LLM
+    Assisted-by: Claude Code:claude-sonnet-5-5
+    
     Change-Id: Ib667fc641333335b735325f6745168c4d5c9b99d
 
-commit 0c52c275c1192a2b53f84aa8eeb2f29ee6ee88b1
+commit b7163b4a5f1d992017438f28bed13faf08ba758e
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
 Date:   Mon Apr 28 15:58:05 2025 +0800
 
     LINEAGE: fs: Add fs that exposes Android boot image components as files
     
+    Exposes the components of boot.img (header versions 0 to 4) and
+    vendor_boot.img (versions 3 and 4) as files: kernel, ramdisk.img,
+    second, recovery_dtbo, dtb, signature, vendor_ramdisk.img, the vendor
+    ramdisk fragments, bootconfig.txt, a bootconfig.bin that is ready to be
+    appended to a ramdisk, and *-info.cfg files that set variables with the
+    names and command lines from the headers.
+    
+    The headers come from the disk, so treat them as untrusted: check the
+    version and the page size, check the vendor ramdisk table against its
+    limits, use 64-bit offsets, and quote the strings in the generated
+    scripts.
+    
+    Assisted-by: LLM
+    Assisted-by: Claude Code:claude-sonnet-5-5
+    
     Change-Id: I1448210bb4eb1104e6fc370ff41de7ea2858dc12
 
-commit a88c33801fdfd001f6050bc269bbeb83d383db4b
+commit 854ab2848fd60b015cca4968c5ee6569e7bd6a17
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
 Date:   Fri May 2 12:22:27 2025 +0800
 
     LINEAGE: command: Introduce loadstring command for loading partition data into variable (v2)
     
+    Usage: loadstring DEVICE VARIABLE SIZE [OFFSET]
+    
+    Reads SIZE bytes at OFFSET from the disk or partition DEVICE and stores
+    them as a string in VARIABLE. SIZE is limited to 64 KiB.
+    
+    Reject a wrong number of arguments and invalid numbers, and release the
+    device and the buffer on all error paths.
+    
+    Assisted-by: LLM
+    Assisted-by: Claude Code:claude-sonnet-5-5
+    
     Change-Id: I9f198655eed40f298f6daa1de6ea93d96682c5b7
 
-commit 7d0bf3e47f0924e4e080065aa5e6f7806286c72e
+commit e0c173a4a798f77e0cf8e7880aea8c5bc4d68d89
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
 Date:   Tue Apr 29 14:38:41 2025 +0800
 
     LINEAGE: .gitignore: Add paths that appears after build
     
+    Assisted-by: LLM
+    Assisted-by: Claude Code:claude-sonnet-5-5
+    
     Change-Id: I6d9f5bfa1fc580087e1a08b6f3ab670f6e6e4f0c
 
-commit 34565b08953139a591bca9ec0681c961e7073449
+commit 2e7eafd688082e8f094cde51c1087814413c027f
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
 Date:   Mon Apr 28 14:22:22 2025 +0800
 
     LINEAGE: Add .clang-format
+    
+    Approximate the GNU coding style that the GRUB source code uses: tabs
+    for 8 column indentation, 2 spaces per level, GNU braces, a space before
+    every opening parenthesis and return types on their own line.
+    
+    The upstream code is not entirely consistent, so this is meant for new
+    files and changed lines (git clang-format), not for reformatting
+    upstream files.
+    
+    Assisted-by: LLM
+    Assisted-by: Claude Code:claude-sonnet-5-5
     
     Change-Id: I874f11aa63deeddd9e5bc8e25df9875a223d6d67
