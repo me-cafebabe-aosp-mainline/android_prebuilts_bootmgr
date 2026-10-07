@@ -1,49 +1,47 @@
-commit d123190b1d2879bc53b4cf90a81c161778ebace6 (HEAD -> lineage-22.1)
-Author: Yumi Yukimura <me.cafebabe@gmail.com>
-Date:   Sun Mar 9 02:52:49 2025 +0800
-
-    fixup! LINEAGE: loadstring: Fix compilation
-    
-    Change-Id: I57af12879f3f579e605f031e4867d909349c1186
-
-commit 903db50cb538e5e70cc6c79fa6fd3420ff316702
+commit d3f8d43f04ae699410c9142f578cb762cb95589d
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
 Date:   Thu Feb 27 20:05:51 2025 +0800
 
-    LINEAGE: util/grub-mkrescue: Use `i386-pc` source dir in prebuilts/bootmgr if present
+    LINEAGE: util/grub-mkrescue: Use `i386-pc`/`i386-efi` source dir in prebuilts/bootmgr if present
     
     Change-Id: I5799ae15ccad24168491b7935510987e858e5d68
 
-commit 885862c4b068b276223f413dce0bf7d05c1a0c09
+commit e7e19f4cfc6285f5c30f324f8fd0c8b6c88126b6
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
-Date:   Thu Feb 27 20:09:24 2025 +0800
+Date:   Sat May 3 15:07:26 2025 +0800
 
-    LINEAGE: loadstring: Fix compilation
+    LINEAGE: loader: linux: Add command to specify to avoid ALIGN_UP initrd offsets
     
-    Change-Id: I3396a36737839361b6078d188c1c3711730234f1
+    Change-Id: Ib667fc641333335b735325f6745168c4d5c9b99d
 
-commit 72b0463d65eb5697e5aa2c16542fa3f5478f5788
+commit 0c52c275c1192a2b53f84aa8eeb2f29ee6ee88b1
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
-Date:   Fri Sep 20 23:53:13 2024 +0800
+Date:   Mon Apr 28 15:58:05 2025 +0800
 
-    loadstring: Implement `offset` and `size` argument
+    LINEAGE: fs: Add fs that exposes Android boot image components as files
     
-    * Increase max string length to 512 while we're at it
-    
-    Change-Id: I8ea84e22ca993f863363921789df3b373985ec21
+    Change-Id: I1448210bb4eb1104e6fc370ff41de7ea2858dc12
 
-commit 7138c889ac593cf8758725d1467d1d28ec7f9356
+commit a88c33801fdfd001f6050bc269bbeb83d383db4b
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
-Date:   Thu Sep 26 04:53:20 2024 +0800
+Date:   Fri May 2 12:22:27 2025 +0800
 
-    loadstring: Clear buffer before reading
+    LINEAGE: command: Introduce loadstring command for loading partition data into variable (v2)
     
-    Change-Id: I79a330ac4df839f62341800e972ac02358a23d07
+    Change-Id: I9f198655eed40f298f6daa1de6ea93d96682c5b7
 
-commit d43741bfd8c9a9e89f1a3b7796947da13c2d06f6
+commit 7d0bf3e47f0924e4e080065aa5e6f7806286c72e
 Author: Yumi Yukimura <me.cafebabe@gmail.com>
-Date:   Tue Jul 23 05:15:43 2024 +0800
+Date:   Tue Apr 29 14:38:41 2025 +0800
 
-    Introduce loadstring command for loading partition data into variable
+    LINEAGE: .gitignore: Add paths that appears after build
     
-    Change-Id: I5ec3a7533718f4f08da0144531f8962e9211ee85
+    Change-Id: I6d9f5bfa1fc580087e1a08b6f3ab670f6e6e4f0c
+
+commit 34565b08953139a591bca9ec0681c961e7073449
+Author: Yumi Yukimura <me.cafebabe@gmail.com>
+Date:   Mon Apr 28 14:22:22 2025 +0800
+
+    LINEAGE: Add .clang-format
+    
+    Change-Id: I874f11aa63deeddd9e5bc8e25df9875a223d6d67

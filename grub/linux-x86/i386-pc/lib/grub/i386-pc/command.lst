@@ -1,6 +1,7 @@
 *acpi: acpi
 *all_functional_test: functional_test
 *background_image: gfxterm_background
+*blscfg: blsuki
 *cat: cat
 *cmp: cmp
 *cpuid: cpuid

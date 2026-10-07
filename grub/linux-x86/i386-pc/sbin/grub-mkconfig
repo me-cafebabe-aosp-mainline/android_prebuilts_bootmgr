@@ -27,7 +27,7 @@ sbindir="${exec_prefix}/sbin"
 bindir="${exec_prefix}/bin"
 sysconfdir="${prefix}/etc"
 PACKAGE_NAME=GRUB
-PACKAGE_VERSION=2.13
+PACKAGE_VERSION=2.15
 host_os=linux-gnu
 datadir="${datarootdir}"
 if [ "x$pkgdatadir" = x ]; then
@@ -255,7 +255,8 @@ export GRUB_DEFAULT \
   GRUB_ENABLE_CRYPTODISK \
   GRUB_BADRAM \
   GRUB_OS_PROBER_SKIP_LIST \
-  GRUB_DISABLE_SUBMENU
+  GRUB_DISABLE_SUBMENU \
+  GRUB_FORCE_EFI_ALL_VIDEO
 
 if test "x${grub_cfg}" != "x"; then
   rm -f "${grub_cfg}.new"

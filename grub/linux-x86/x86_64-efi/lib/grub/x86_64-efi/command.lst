@@ -1,6 +1,7 @@
 *acpi: acpi
 *all_functional_test: functional_test
 *background_image: gfxterm_background
+*blscfg: blsuki
 *cat: cat
 *cmp: cmp
 *cpuid: cpuid
@@ -60,6 +61,7 @@
 *tpm2_key_protector_init: tpm2_key_protector
 *tr: tr
 *trust: pgp
+*uki: blsuki
 *verify_detached: pgp
 *xnu_splash: xnu
 *zfskey: zfscrypt

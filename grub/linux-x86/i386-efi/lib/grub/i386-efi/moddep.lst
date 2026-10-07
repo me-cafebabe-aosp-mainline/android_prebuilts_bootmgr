@@ -7,13 +7,13 @@ memrw: extcmd
 terminfo: extcmd
 f2fs: fshelp
 part_gpt:
-gcry_sm3: crypto gcry_sha512
+gcry_sm3: crypto gcry_hwfeatures gcry_sha512
 romfs: fshelp
 read: extcmd
 lsefimmap:
-gcry_sm4: crypto
-aout:
+gcry_sm4: crypto gcry_hwfeatures
 gcry_arcfour: crypto
+aout:
 tftp: net
 newc: archelp
 minix2_be:
@@ -37,6 +37,7 @@ cbls: cbtable
 gcry_idea: crypto
 tr: extcmd
 shift_test: functional_test
+crypto_cipher_mode_test: crypto functional_test
 ohci: boot cs5536 usb
 afs: fshelp
 spkmodem: terminfo
@@ -65,10 +66,10 @@ functional_test: btrfs extcmd video video_fb
 bswap_test: functional_test
 sleep: extcmd normal
 memdisk:
-gcry_rijndael: crypto
+gcry_rijndael: crypto gcry_hwfeatures
 mdraid09_be: diskfilter
 gettext:
-gcry_sha1: crypto gcry_sha512
+gcry_sha1: crypto gcry_hwfeatures gcry_sha512
 hfspluscomp: gzio hfsplus
 cmp: extcmd
 random: hexdump
@@ -77,6 +78,7 @@ file: elf extcmd macho offsetio
 usbserial_usbdebug: serial usb usbserial_common
 video_colors:
 morse:
+argon2_test: argon2 functional_test
 hashsum: crypto extcmd normal
 usb:
 halt: acpi
@@ -84,7 +86,7 @@ gdb: backtrace serial
 rsa_sexp_test: functional_test gcry_rsa pubkey
 gfxterm_background: bitmap bitmap_scale extcmd gfxterm video video_colors
 search_fs_uuid:
-gcry_dsa: crypto mpi pgp pubkey
+gcry_dsa: crypto mpi pubkey
 keystatus: extcmd
 dsa_sexp_test: functional_test gcry_dsa pubkey
 linux: boot mmap relocator video
@@ -92,7 +94,8 @@ geli: crypto cryptodisk gcry_sha256 gcry_sha512 pbkdf2
 rdmsr: extcmd
 part_sun:
 cbtable:
-pbkdf2_test: functional_test gcry_sha1 pbkdf2
+argon2: gcry_kdf
+pbkdf2_test: functional_test gcry_sha1 gcry_sha256 gcry_sha512 pbkdf2
 video_bochs: video video_fb
 bufio:
 usbserial_ftdi: serial usb usbserial_common
@@ -103,7 +106,7 @@ bfs: fshelp
 gcry_blowfish: crypto
 test:
 nilfs2: fshelp
-gcry_rsa: crypto mpi pgp pubkey
+gcry_rsa: crypto mpi pubkey
 cryptodisk: crypto extcmd key_protector procfs
 nativedisk:
 minicmd: cryptodisk
@@ -112,7 +115,7 @@ key_protector:
 ata: scsi
 udf: fshelp
 gzio: gcry_crc
-gcry_aria: crypto
+gcry_aria: crypto gcry_hwfeatures
 xnu_uuid: gcry_md5
 uhci: usb
 pata: ata
@@ -124,16 +127,16 @@ gcry_stribog: crypto gcry_sha512
 ehci: boot cs5536 usb
 crypto:
 part_bsd: part_msdos
-luks2: afsplitter crypto cryptodisk json pbkdf2
+luks2: afsplitter argon2 crypto cryptodisk json pbkdf2
 cs5536:
-gcry_sha512: crypto
-gcry_keccak: crypto
+gcry_sha512: crypto gcry_hwfeatures
+gcry_keccak: crypto gcry_hwfeatures
 password: crypto normal
 fshelp:
 sleep_test: datetime functional_test
 iorw: extcmd
 efitextmode:
-bli: part_gpt
+bli: part_gpt tpm
 xnu: bitmap bitmap_scale boot extcmd macho mmap random relocator video
 mmap:
 exfctest: functional_test
@@ -157,7 +160,7 @@ bitmap:
 ntfs: fshelp
 multiboot: boot elf linux mmap net relocator video
 tpm:
-gcry_crc: crypto
+gcry_crc: crypto gcry_hwfeatures
 png: bitmap bufio
 json:
 jpeg: bitmap bufio
@@ -213,6 +216,8 @@ efifwsetup:
 ctz_test: functional_test
 video:
 cbmemc: cbtable normal terminfo
+zstdio: zstd
+gcry_hwfeatures: crypto
 cmosdump:
 hfsplus: fshelp
 gcry_cast5: crypto
@@ -232,10 +237,10 @@ trig:
 msdospart: disk parttool
 android_bootimg_fs:
 priority_queue:
-gcry_twofish: crypto
+gcry_twofish: crypto gcry_hwfeatures
 plainmount: crypto cryptodisk extcmd
 part_dfly:
-gcry_blake2: crypto
+gcry_blake2: crypto gcry_hwfeatures
 xnu_uuid_test: functional_test
 diskfilter:
 testload:
@@ -244,7 +249,7 @@ hexdump: extcmd
 loadstring:
 date: datetime
 pbkdf2: crypto
-gcry_sha256: crypto gcry_sha512
+gcry_sha256: crypto gcry_hwfeatures gcry_sha512
 ls: datetime extcmd normal
 usbserial_common: serial usb
 ntfscomp: ntfs
@@ -263,6 +268,7 @@ mdraid09: diskfilter
 lvm: diskfilter
 chain: boot efinet net
 cbfs: archelp
+gcry_kdf: crypto gcry_blake2
 ufs2:
 time:
 setpci: extcmd
@@ -271,6 +277,7 @@ search_label:
 setjmp:
 multiboot2: acpi boot elf linux mmap net relocator video
 gcry_rfc2268: crypto
+blsuki: extcmd normal
 mdraid1x: diskfilter
 mpi: crypto gcry_keccak
 legacycfg: crypto gcry_md5 normal password
@@ -285,6 +292,6 @@ gcry_md4: crypto gcry_sha512
 gcry_md5: crypto gcry_sha512
 pubkey: crypto mpi
 part_msdos:
-gcry_camellia: crypto
+gcry_camellia: crypto gcry_hwfeatures
 at_keyboard: boot keylayouts
 all_video: efi_gop efi_uga video_bochs video_cirrus
