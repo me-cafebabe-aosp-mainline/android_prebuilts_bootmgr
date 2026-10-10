@@ -1,0 +1,42 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["prebuilts_bootmgr_license"],
+    default_visibility: ["//visibility:public"],
+}
+
+license {
+    name: "prebuilts_bootmgr_license",
+    license_kinds: ["SPDX-license-identifier-GPL-3.0"],
+    license_text: ["LICENSE_GPLv3"],
+}
+
+// For genrules that run the GRUB tools: they are started through the
+// dynamic loader in lib64, with --library-path pointing at it.
+filegroup {
+    name: "bootmgr_lib64",
+    srcs: ["lib64/*"],
+}
+
+filegroup {
+    name: "bootmgr_grub_linux-x86_arm64-efi",
+    srcs: ["grub/linux-x86/arm64-efi/**/*"],
+}
+
+filegroup {
+    name: "bootmgr_grub_linux-x86_i386-efi",
+    srcs: ["grub/linux-x86/i386-efi/**/*"],
+}
+
+filegroup {
+    name: "bootmgr_grub_linux-x86_i386-pc",
+    srcs: ["grub/linux-x86/i386-pc/**/*"],
+}
+
+filegroup {
+    name: "bootmgr_grub_linux-x86_x86_64-efi",
+    srcs: ["grub/linux-x86/x86_64-efi/**/*"],
+}
